@@ -6,4 +6,5 @@ Java 8 individual Study
 
 ### Study Description  
   
-> 함수형 인터페이스와 람다 
+> 함수형 인터페이스와 람다 : RunSomething, RunSomething2
+>

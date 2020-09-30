@@ -1,4 +1,4 @@
-package me.ggomjae.java8to11;
+package me.ggomjae.java8to11.one;
 
 @FunctionalInterface
 public interface RunSomething2 {

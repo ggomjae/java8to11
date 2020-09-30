@@ -1,5 +1,11 @@
 package me.ggomjae.java8to11;
 
+import me.ggomjae.java8to11.one.RunSomething;
+import me.ggomjae.java8to11.one.RunSomething2;
+import me.ggomjae.java8to11.two.Plus10;
+
+import java.util.function.*;
+
 /*
 First Class Citizon는 아래와 같은 속성들을 모두 만족해야 한다.
 
@@ -12,6 +18,10 @@ Java8에서는 함수를 일급객체처럼 다룰 수 있게 함수형 인터�
  */
 public class Foo {
     public static void main(String[] args) {
+
+        ////////////////////////////////////////////////////////
+        //       One                                          //
+        ////////////////////////////////////////////////////////
 
         // 익명 내부 클래스
         /* 방법 1
@@ -39,5 +49,41 @@ public class Foo {
          순수한 함수 인터페이스 같은 경우에는 지역 변수라는지, 외부 변수라든지를 넣지 않는 것이 좋다
          예를 들면 new runSomething() { int localNumber = 10 ; doit(localNumber); } ;
          */
+
+        ////////////////////////////////////////////////////////
+        //       Two                                          //
+        ////////////////////////////////////////////////////////
+
+        /*
+        Plus10 plus10 = new Plus10();
+        System.out.println(plus10.apply(10));
+        */
+        Function<Integer,Integer> plus10 = (number) -> number + 10;
+        System.out.println(plus10.apply(10));
+
+        /* 조합을 할 수 있다 */
+        Function<Integer, Integer> mutiply = (number) -> number * 2;
+        Function<Integer, Integer> mutiplyAndPlus10 = plus10.compose(mutiply);
+        System.out.println(mutiplyAndPlus10.apply(10));
+
+        /* 옆에 붙이기. 조합반대*/
+        Function<Integer, Integer> plus10AndThenmutiply = plus10.andThen(mutiply);
+        System.out.println(plus10AndThenmutiply.apply(10));
+
+        /* 또 다른 자바 패키지에 있는 */
+        // 아무것도 반환하지 않겠다.
+        Consumer<Integer> printT = (number) -> System.out.println(number);
+        printT.accept(10);
+
+        // 받지 않고 공급만 하겠다. 그래서 매개변수에 없음
+        Supplier<Integer> get10 = () -> 10;
+        System.out.println(get10.get());
+
+        // Boolean 값만 나옴 그래서 or, and 등 조합가능
+        Predicate<String> startsWithggomjae = (s) -> s.startsWith("ggomjae");
+        Predicate<Integer> isEven = (number) -> number%2 == 0;
+
+        // Function<Integer, Integer> 처럼 입력값과 결과값이 같은 때 사용 가능 깔끔하게.
+        UnaryOperator<Integer> unaryOperator = (number) -> number + 2;
     }
 }
