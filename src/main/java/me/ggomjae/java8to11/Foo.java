@@ -1,9 +1,11 @@
 package me.ggomjae.java8to11;
 
+import me.ggomjae.java8to11.four.Greeting;
 import me.ggomjae.java8to11.one.RunSomething;
 import me.ggomjae.java8to11.one.RunSomething2;
 import me.ggomjae.java8to11.two.Plus10;
 
+import java.util.Arrays;
 import java.util.function.*;
 
 /*
@@ -92,6 +94,28 @@ public class Foo {
 
         Foo foo = new Foo();
         foo.run();
+
+        ////////////////////////////////////////////////////////
+        //       Four                                         //
+        ////////////////////////////////////////////////////////
+
+        UnaryOperator<String> hi = (s) -> "hi" + s;
+        UnaryOperator<String> hi2 = Greeting::hi; // 스태틱 메소드를 사용한 메소드 레퍼런스 :: <-- 이표시가 레퍼런스
+
+        Greeting greeting = new Greeting();
+        UnaryOperator<String> hi3 = greeting::hello; // 인스턴스 메소드를 참조
+        hi3.apply("ggomjae"); // 이렇게 해야 무슨일이 일어나는거지.
+
+        // 그럼 생성자는 ? public Greeting ? 이거 타입은 Greeting을 리턴하는거지.
+        Supplier<Greeting> newGreeting = Greeting::new;
+        Greeting greeting1 = newGreeting.get();
+
+        // 자 그럼 매개변수가 있는 생성자는 ? Greeting::new 가 같지만 다른 것을 참조하고 있다.
+        Function<String, Greeting> newGreeting2 = Greeting::new;
+
+        // 임의의 객체 레퍼런스 이런식도 가능하다
+        String[] array = {"kyungjae", "ggomjae"};
+        Arrays.sort(array, String::compareToIgnoreCase);
     }
 
     /* Three */
