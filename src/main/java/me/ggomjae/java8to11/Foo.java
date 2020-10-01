@@ -85,5 +85,38 @@ public class Foo {
 
         // Function<Integer, Integer> 처럼 입력값과 결과값이 같은 때 사용 가능 깔끔하게.
         UnaryOperator<Integer> unaryOperator = (number) -> number + 2;
+
+        ////////////////////////////////////////////////////////
+        //       Three                                        //
+        ////////////////////////////////////////////////////////
+
+        Foo foo = new Foo();
+        foo.run();
+    }
+
+    /* Three */
+    private void run(){
+
+        final int baseNumber = 10;
+
+        // 내부 클래스에서 baseNumber를 참조하는것
+        class localClass {
+            void printBaseNumber(){
+                int baseNumber = 11;
+                System.out.println(baseNumber); // 11이 찍힌다. 이게 쉐도윙. 뒤에있는 변수를 가린것.
+            }
+        }
+
+        // 익명 클래스에서 baseNumber를 참조하는것
+        Consumer<Integer> consumer = new Consumer<Integer>() {
+            @Override
+            public void accept(Integer baseNumber) {
+                System.out.println(baseNumber); // 이것도 쉐도윙. 파라미터를 받음.
+            }
+        };
+
+        // Lamda : 람다는 다르다 ! baseNumber가 같은 Scope이기에 쉐도잉이 불가능. 같은 Scope안에 같은 변수 선언? X
+        IntConsumer printInt = (number) -> System.out.println(number + baseNumber);
+        printInt.accept(10);
     }
 }
