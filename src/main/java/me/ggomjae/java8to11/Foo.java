@@ -139,7 +139,7 @@ public class Foo {
             }
         };
 
-        // Lamda : 람다는 다르다 ! baseNumber가 같은 Scope이기에 쉐도잉이 불가능. 같은 Scope안에 같은 변수 선언? X
+        // Lambda : 람다는 다르다 ! baseNumber가 같은 Scope이기에 쉐도잉이 불가능. 같은 Scope안에 같은 변수 선언? X
         IntConsumer printInt = (number) -> System.out.println(number + baseNumber);
         printInt.accept(10);
     }
