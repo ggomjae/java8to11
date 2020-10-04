@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Spliterator;
 
 
+
 public class App {
     public static void main(String[] args){
         Foo2 foo2 = new Foo2("ggomjae");
@@ -59,7 +60,5 @@ public class App {
         Comparator<String> compareToIgnoreCase = String::compareToIgnoreCase;
         name.sort(compareToIgnoreCase);
         name.sort(compareToIgnoreCase.reversed());
-
-
     }
 }
