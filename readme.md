@@ -7,7 +7,7 @@ Java 8 individual Study
 ### Study Description  
   
 > 2020-10-01 : 함수형 인터페이스와 람다 - One,Two,Three,Four -> Foo Class <br>
->[https://blog.naver.com/ggomjae/222104438991 <br> 
+>[https://blog.naver.com/ggomjae/222104438991] <br> 
 
 > 2020-10-02 : 인터페이스 기본 메소드와 스태틱 메소드 - App, Foo2, five <br> 
 >[https://blog.naver.com/ggomjae/222105258406] <br> 
