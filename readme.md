@@ -23,3 +23,6 @@ Java 8 individual Study
 
 >2020-10-09 : concurrent - Executors, Callable, Future, CompletableFuture <br>
 >https://blog.naver.com/ggomjae/222111275515
+
+>2020-10-09 : Annotation <br>
+>https://blog.naver.com/ggomjae/222111382805
